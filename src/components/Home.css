@@ -1,0 +1,116 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    /* 基本の文字サイズを設定 */
+    /* font-weight: normal; */
+    /* 通常の太さ */
+}
+
+#root {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 2rem;
+    --main-text-color: #000000;
+    background-color: white;
+    color: var(--main-text-color);
+    font-size: 1.25rem;
+    /* #root内の文字サイズを設定 */
+    --good-font-weight: 500;
+    /* 太字 */
+}
+
+#head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--main-text-color);
+    font-size: 1rem;
+    /* ヘッダー内の文字サイズを設定 */
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+#edit {
+    width: 40px;
+    height: auto;
+    padding-right: 20px;
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+#start {
+    width: 40px;
+    height: auto;
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+#goal {
+    width: 40px;
+    height: auto;
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+#stations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--main-text-color);
+    font-size: 1.25rem;
+    /* ステーション内の文字サイズを設定 */
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+.station-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    color: var(--main-text-color);
+    font-size: 1.25rem;
+    /* ステーションコンテナ内の文字サイズを設定 */
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+.station-item,
+.station-drop-area {
+    padding: 1rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    display: inline-block;
+    color: var(--main-text-color);
+    font-size: 1.25rem;
+    /* ステーションアイテムとドロップエリア内の文字サイズを設定 */
+    font-weight: bold;
+    /* 太字 */
+}
+
+.station-item.dragging {
+    opacity: 0.5;
+}
+
+.station-drop-area {
+    border-radius: 0;
+    color: var(--main-text-color);
+    font-size: 1.25rem;
+    /* ステーションドロップエリア内の文字サイズを設定 */
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
+
+.station-drop-area.over {
+    border-color: #ffab40;
+    background-color: #ffe0b2;
+    border-radius: 10%;
+    font-weight: var(--good-font-weight);
+    /* 通常の太さ */
+}
