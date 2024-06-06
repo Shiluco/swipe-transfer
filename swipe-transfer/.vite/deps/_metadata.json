@@ -1,0 +1,61 @@
+{
+  "hash": "7eddf5eb",
+  "configHash": "546c6a85",
+  "lockfileHash": "85bba801",
+  "browserHash": "8da9ee13",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "8bcbb5c6",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "cb729a75",
+      "needsInterop": true
+    },
+    "react-device-detect": {
+      "src": "../../../node_modules/react-device-detect/dist/lib.js",
+      "file": "react-device-detect.js",
+      "fileHash": "f60998b4",
+      "needsInterop": true
+    },
+    "react-dnd": {
+      "src": "../../../node_modules/react-dnd/dist/index.js",
+      "file": "react-dnd.js",
+      "fileHash": "e45b9dd2",
+      "needsInterop": false
+    },
+    "react-dnd-html5-backend": {
+      "src": "../../../node_modules/react-dnd-html5-backend/dist/index.js",
+      "file": "react-dnd-html5-backend.js",
+      "fileHash": "c7d12417",
+      "needsInterop": false
+    },
+    "react-dnd-touch-backend": {
+      "src": "../../../node_modules/react-dnd-touch-backend/dist/index.js",
+      "file": "react-dnd-touch-backend.js",
+      "fileHash": "dc7f74e9",
+      "needsInterop": false
+    },
+    "react-dom/client": {
+      "src": "../../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "a92ad14e",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-AARVIJVV": {
+      "file": "chunk-AARVIJVV.js"
+    },
+    "chunk-BVTY4LHN": {
+      "file": "chunk-BVTY4LHN.js"
+    },
+    "chunk-ZS7NZCD4": {
+      "file": "chunk-ZS7NZCD4.js"
+    }
+  }
+}
