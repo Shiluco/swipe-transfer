@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDrag } from "react-dnd";
 import start from "../assets/start.svg";
 
@@ -6,31 +6,44 @@ const ItemTypes = {
   BIRD: "bird",
 };
 
-interface GetStationItemProps {
-  station: string;
-  setDraggingStation: (station: string | null) => void;
-}
-
-const GetStationItem: React.FC<GetStationItemProps> = ({
-  station,
+const GetStationItem = ({
+  stationName,
   setDraggingStation,
+}: {
+  stationName: string;
+  setDraggingStation: (station: string | null) => void;
 }) => {
+  const handleDragStart = () => {
+    console.log("Drag started");
+  };
+
+  const handleDragEnd = () => {
+    console.log("Drag ended");
+  };
+
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemTypes.BIRD,
       item: () => {
-        setDraggingStation(station);
-        return { name: station, type: ItemTypes.BIRD };
+        handleDragStart();
+        // setDraggingStation(stationName);
+        return { name: stationName, type: ItemTypes.BIRD };
       },
-      end: () => {
+      end: (item, monitor) => {
+        handleDragEnd();
         setDraggingStation(null);
       },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
     }),
-    [station]
+    [stationName]
   );
+
+  useEffect(() => {
+    // console.log(`isDragging: ${isDragging}`);
+    setDraggingStation(isDragging ? stationName : null);
+  }, [isDragging, setDraggingStation, stationName]);
 
   return (
     <div ref={drag} className={`station-item ${isDragging ? "dragging" : ""}`}>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./Home.css";
+import "./styles/Home.css";
+import OneStation from "./OneStation";
 import edit from "../assets/edit.svg";
 import { isMobile } from "react-device-detect";
 import { DndProvider } from "react-dnd";
@@ -7,8 +8,6 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import Button from "@mui/material/Button";
 import EditDialog from "./EditDialog";
-import GetStationItem from "./GetStationItem";
-import StationDropArea from "./StationDropArea";
 
 const Home: React.FC = () => {
   const [options, setOptions] = useState<string[]>(() => {
@@ -57,19 +56,19 @@ const Home: React.FC = () => {
             <img id="edit" src={edit} alt="edit" />
           </Button>
         </div>
+
+        <div id="description"></div>
+
         <div id="stations">
           {options.map((option, index) => (
-            <div key={index} className="station-container">
-              <span>{option}</span>
-              {!draggingStation || draggingStation === option ? (
-                <GetStationItem
-                  station={option}
-                  setDraggingStation={setDraggingStation}
-                />
-              ) : (
-                <StationDropArea station={option} handleDrop={handleDrop} />
-              )}
-            </div>
+            <OneStation
+              key={index}
+              option={option}
+              draggingStation={draggingStation}
+              setDraggingStation={setDraggingStation}
+              handleDrop={handleDrop}
+              
+            />
           ))}
         </div>
         <EditDialog

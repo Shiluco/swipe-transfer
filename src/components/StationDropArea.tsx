@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useDrop } from "react-dnd";
 import goal from "../assets/goal.svg";
 
@@ -6,24 +6,23 @@ const ItemTypes = {
   BIRD: "bird",
 };
 
-interface StationDropAreaProps {
-  station: string;
-  handleDrop: (item: { name: string; type: string }, target: string) => void;
-}
-
-const StationDropArea: React.FC<StationDropAreaProps> = ({
-  station,
+const StationDropArea = ({
+  stationName,
   handleDrop,
+}: {
+    stationName: string
+  , handleDrop: (item: { name: string; type: string }, target: string) => void 
 }) => {
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: ItemTypes.BIRD,
-      drop: (item: { name: string; type: string }) => handleDrop(item, station),
+      drop: (item: { name: string; type: string }) =>
+        handleDrop(item, stationName),
       collect: (monitor) => ({
         isOver: monitor.isOver(),
       }),
     }),
-    [station]
+    [stationName]
   );
 
   return (
