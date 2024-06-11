@@ -60,16 +60,12 @@ const Home: React.FC = () => {
         <div id="description"></div>
 
         <div id="stations">
-          {options.map((option, index) => (
-            <OneStation
-              key={index}
-              option={option}
-              draggingStation={draggingStation}
-              setDraggingStation={setDraggingStation}
-              handleDrop={handleDrop}
-              
-            />
-          ))}
+          <OneStation
+            options={options}
+            draggingStation={draggingStation}
+            setDraggingStation={setDraggingStation}
+            handleDrop={handleDrop}
+          />
         </div>
         <EditDialog
           open={editDialogOpen}

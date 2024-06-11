@@ -1,8 +1,7 @@
 import { FC, ReactNode } from "react";
 import { useDroppable } from "@dnd-kit/core";
 
-
-//import files
+// Import files
 import goal from "../../assets/goal.svg";
 import "../styles/StationDropArea.css";
 
@@ -13,11 +12,10 @@ type StationDropAreaProps = {
   // accept: string[];
 };
 
-const StationDropArea: FC<StationDropAreaProps> = ({ children, id ,label}) => {
+const StationDropArea: FC<StationDropAreaProps> = ({ children, id, label }) => {
   const { setNodeRef, isOver } = useDroppable({
     id,
-    data: { label }
-    
+    data: { label },
   });
 
   return (

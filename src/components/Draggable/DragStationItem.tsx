@@ -7,16 +7,11 @@ type Props = {
   label: string;
 };
 
-const DragStationItem: FC<Props> = ({ id ,label}) => {
-  const {
-    setNodeRef,
-    listeners,
-    attributes,
-    transform,
-    isDragging
-  } = useDraggable({
-    id,
-    data: {label}
+const DragStationItem: FC<Props> = ({ id, label }) => {
+  const { setNodeRef, listeners, attributes, transform, isDragging } =
+    useDraggable({
+      id,
+      data: { label },
     });
 
   const style = {

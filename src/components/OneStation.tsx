@@ -5,52 +5,64 @@ import StationDropArea from "./Droppable/StationDropArea";
 import "./styles/OneStation.css";
 
 const OneStation = (props: {
-  option: any;
+  options: any;
   draggingStation: any;
   setDraggingStation: any;
   handleDrop: any;
 }) => {
-  const { option, draggingStation, setDraggingStation, handleDrop } = props;
+  const { options, draggingStation, setDraggingStation, handleDrop } = props;
 
-  // useEffect(() => {
-  //   console.log("Current draggingStation:", draggingStation);
-  // }, [draggingStation]);
+  const defaultAnnouncements = {
+    onDragStart(event: any) {
+      setDraggingStation(options);
+      console.log("drag start:", options);
+    },
+
+    onDragEnd(event: any) {
+      {
+        console.log("drag end:");
+        const { over, active } = event;
+        if (!over || !active.data.current) {
+          return;
+        }
+
+        const start = active.data.current.label;
+        const goal = over.data.current?.label; // Add null check here
+
+        console.log("drag end:", "start:", start, "end:", goal);
+
+        if (start && goal) {
+          handleDrop(start, goal);
+        }
+      }
+    },
+  };
 
   return (
-    <div className="station-container">
-      <span className="station-name">{option}</span>
+    <>
       <DndContext
-        onDragStart={(event) => {
-          setDraggingStation(option);
-          console.log("drag start");
-        }}
-        onDragEnd={(event) => {
-          const { over, active } = event;
-          if (over == null || active.data.current == null) {
-            return;
-          }
-
-          console.log(
-            "drag end",
-            "start:",
-            active.data.current,
-            "end:",
-            over.data.current
-          );
-
-          if (active.data.current !== null || over.data.current !== null) {
-            const start = active.data.current.label;
-            const goal = over.data.current?.label; // Add null check here
-            handleDrop(start, goal);
-          }
-        }}
+        onDragStart={defaultAnnouncements.onDragStart}
+        onDragEnd={defaultAnnouncements.onDragEnd}
       >
-        <div className="station-icon">
-          <GetStationItem id="A" label={option} />
-          <StationDropArea id="A" label={option} children={undefined} />
+        <div className="station-container">
+          {options.map((option: string) => (
+            <div className="station-low">
+              <span className="station-name">{option}</span>
+
+              <div className="station-item"></div>
+
+              <GetStationItem id={option} label={option} />
+
+              <StationDropArea
+                id={option}
+                label={option}
+                children={undefined}
+              />
+            </div>
+          ))}
         </div>
       </DndContext>
-    </div>
+    </>
   );
 };
 export default OneStation;
