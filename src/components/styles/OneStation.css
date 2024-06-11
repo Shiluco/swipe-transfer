@@ -19,23 +19,3 @@
   font-weight: bold;
   /* 太字 */
 }
-
-.station-drop-area {
-  padding: 1rem;
-  margin: 0 1rem;
-  cursor: pointer;
-  display: inline-block;
-  color: var(--main-text-color);
-  font-size: 1.25rem;
-  /* ステーションアイテムとドロップエリア内の文字サイズを設定 */
-  font-weight: bold;
-  /* 太字 */
-}
-
-.station-drop-area.over {
-  border-color: #ffab40;
-  background-color: #ffe0b2;
-  border-radius: 10%;
-  font-weight: var(--good-font-weight);
-  /* 通常の太さ */
-}

@@ -26,8 +26,8 @@ const Home: React.FC = () => {
   const [editDialogOpen, setEditDialogOpen] = useState<boolean>(false);
   const [draggingStation, setDraggingStation] = useState<string | null>(null);
 
-  const handleDrop = (item: { name: string; type: string }, target: string) => {
-    const newSelections = [item.name, target];
+  const handleDrop = (name: string, target: string) => {
+    const newSelections = [name, target];
     const start = encodeURIComponent(newSelections[0]);
     const goal = encodeURIComponent(newSelections[1]);
     const url = `https://transit.yahoo.co.jp/search/result?flatlon=&fromgid=&from=${start}&to=${goal}&viacode=&via=&viacode=&via=&viacode=&via=&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=1&ex=1&hb=1&lb=1&sr=1`;

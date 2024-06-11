@@ -1,48 +1,27 @@
-import React, { useEffect } from "react";
-import { useDrag, DragSourceMonitor } from "react-dnd";
-import start from "../assets/start.svg";
+import { FC, ReactNode } from "react";
+import { useDroppable } from "@dnd-kit/core";
+import goal from "../../assets/goal.svg";
+import "../styles/StationDropArea.css";
 
-const ItemTypes = {
-  BIRD: "bird",
+type StationDropAreaProps = {
+  children: ReactNode;
+  id: string;
 };
 
-const GetStationItem = ({
-  stationName,
-  setDraggingStation,
-}: {
-  stationName: string;
-  setDraggingStation: (station: string | null) => void;
-}) => {
-  const [{ isDragging }, drag] = useDrag(
-    () => ({
-      type: ItemTypes.BIRD,
-      item: { name: stationName, type: ItemTypes.BIRD },
-      end: (item, monitor: DragSourceMonitor) => {
-        const dropResult = monitor.getDropResult();
-        setDraggingStation(null);
-      },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-      }),
-    }),
-    [stationName]
-  );
-
-  useEffect(() => {
-    console.log(`isDragging: ${isDragging}`);
-  }, [isDragging]);
+const StationDropArea: FC<StationDropAreaProps> = ({ children, id }) => {
+  const { setNodeRef, isOver } = useDroppable({
+    id,
+  });
 
   return (
     <div
-      ref={drag}
-      className={`station-item ${isDragging ? "dragging" : ""}`}
-      key={start}
+      ref={setNodeRef}
+      className={`station-drop-area ${isOver ? "over" : ""}`}
     >
-      <img id="start" src={start} alt="start" />
+      <img id="goal" src={goal} alt="goal" />
+      {children}
     </div>
   );
 };
 
-export default GetStationItem;
-
-
+export default StationDropArea;
