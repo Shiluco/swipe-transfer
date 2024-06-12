@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./Home.css";
+import "./styles/Home.css";
+import OneStation from "./OneStation";
 import edit from "../assets/edit.svg";
 import { isMobile } from "react-device-detect";
 import { DndProvider } from "react-dnd";
@@ -7,8 +8,6 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import Button from "@mui/material/Button";
 import EditDialog from "./EditDialog";
-import GetStationItem from "./GetStationItem";
-import StationDropArea from "./StationDropArea";
 
 const Home: React.FC = () => {
   const [options, setOptions] = useState<string[]>(() => {
@@ -27,8 +26,8 @@ const Home: React.FC = () => {
   const [editDialogOpen, setEditDialogOpen] = useState<boolean>(false);
   const [draggingStation, setDraggingStation] = useState<string | null>(null);
 
-  const handleDrop = (item: { name: string; type: string }, target: string) => {
-    const newSelections = [item.name, target];
+  const handleDrop = (name: string, target: string) => {
+    const newSelections = [name, target];
     const start = encodeURIComponent(newSelections[0]);
     const goal = encodeURIComponent(newSelections[1]);
     const url = `https://transit.yahoo.co.jp/search/result?flatlon=&fromgid=&from=${start}&to=${goal}&viacode=&via=&viacode=&via=&viacode=&via=&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=1&ex=1&hb=1&lb=1&sr=1`;
@@ -57,20 +56,16 @@ const Home: React.FC = () => {
             <img id="edit" src={edit} alt="edit" />
           </Button>
         </div>
+
+        <div id="description"></div>
+
         <div id="stations">
-          {options.map((option, index) => (
-            <div key={index} className="station-container">
-              <span>{option}</span>
-              {!draggingStation || draggingStation === option ? (
-                <GetStationItem
-                  station={option}
-                  setDraggingStation={setDraggingStation}
-                />
-              ) : (
-                <StationDropArea station={option} handleDrop={handleDrop} />
-              )}
-            </div>
-          ))}
+          <OneStation
+            options={options}
+            draggingStation={draggingStation}
+            setDraggingStation={setDraggingStation}
+            handleDrop={handleDrop}
+          />
         </div>
         <EditDialog
           open={editDialogOpen}
