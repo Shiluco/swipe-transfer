@@ -9,7 +9,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png"], // offline.htmlを追加
+      includeAssets: ["favicon.ico", "apple-touch-icon.png"], // 必要な画像を含める
       manifest: {
         name: "Swipe→JUMP",
         short_name: "SwipeJUMP",
@@ -20,17 +20,17 @@ export default defineConfig({
         orientation: "portrait",
         icons: [
           {
-            src: "icons/icon-192x192.png",
+            src: "/icons/icon-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "icons/icon-512x512.png",
+            src: "/icons/icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "icons/icon-512x512.png",
+            src: "/icons/icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
@@ -72,16 +72,12 @@ export default defineConfig({
             },
           },
         ],
-        
       },
       devOptions: {
         enabled: true,
       },
     }),
   ],
-  optimizeDeps: {
-    exclude: ["chunk-74SHYG65.js", "chunk-YSLWII7P.js", "chunk-ZJNTSUWQ.js"],
-  },
   server: {
     host: "0.0.0.0",
     port: 5173,
