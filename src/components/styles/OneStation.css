@@ -8,6 +8,7 @@
 }
 
 .station-low {
+  height: 90px;
   display: flex;
   color: var(--low-text-color);
   justify-content: space-between;
@@ -27,10 +28,4 @@
   display: flex;
   align-items: center;
   /* 垂直方向に中央揃え */
-}
-
-.station-drop-area.over {
-  padding: 1rem;
-  border-color: #ffab40;
-  background-color: #ffe0b2;
 }
