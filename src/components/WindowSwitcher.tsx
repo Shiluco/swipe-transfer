@@ -1,8 +1,13 @@
-import Home from './Home';
+import Home from "./Home";
+import AllScrollLock from "./AllScrollLock";
 
 function WindowSwitcher() {
-    return <Home/>
-    ;
+  return (
+    <>
+      <Home />
+      <AllScrollLock />
+    </>
+  );
 }
 
 export default WindowSwitcher;

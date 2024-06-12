@@ -8,7 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "offline.html"], // offline.htmlを追加
+      includeAssets: ["favicon.ico", "apple-touch-icon.png"], // offline.htmlを追加
       manifest: {
         name: "Swipe→JUMP",
         short_name: "SwipeJUMP",
