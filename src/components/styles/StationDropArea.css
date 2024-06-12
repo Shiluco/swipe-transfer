@@ -1,13 +1,5 @@
 .station-drop-area {
   padding: 1rem;
-  margin: 0 1rem;
-  cursor: pointer;
-  display: inline-block;
-  color: var(--main-text-color);
-  font-size: 1.25rem;
-  /* ステーションアイテムとドロップエリア内の文字サイズを設定 */
-  font-weight: bold;
-  /* 太字 */
 }
 
 .station-drop-area.over {

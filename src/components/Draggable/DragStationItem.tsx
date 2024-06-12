@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import { useDraggable } from "@dnd-kit/core";
 import StartLooks from "./StartLooks";
 

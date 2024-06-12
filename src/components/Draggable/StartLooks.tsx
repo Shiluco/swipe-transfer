@@ -5,9 +5,7 @@ type GetStationItem = {
   isDragging?: boolean;
 };
 
-const DraggableBlockSource: FC<GetStationItem> = ({
-  isDragging
-}) => {
+const DraggableBlockSource: FC<GetStationItem> = () => {
   return (
     <div>
       <img id="start" src={start} alt="start" />
