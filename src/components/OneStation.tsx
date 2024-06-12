@@ -13,9 +13,11 @@ const OneStation = (props: {
   const { options, draggingStation, setDraggingStation, handleDrop } = props;
 
   const defaultAnnouncements = {
-    onDragStart(event: any) {
-      setDraggingStation(options);
-      console.log("drag start:", options);
+    onDragStart(event: any)
+    {
+      const option = event.active.data.current?.label;
+      setDraggingStation(option);
+      console.log("drag start:", option);
     },
 
     onDragEnd(event: any) {
@@ -23,6 +25,7 @@ const OneStation = (props: {
         console.log("drag end:");
         const { over, active } = event;
         if (!over || !active.data.current) {
+          setDraggingStation(null);
           return;
         }
 
@@ -34,6 +37,8 @@ const OneStation = (props: {
         if (start && goal) {
           handleDrop(start, goal);
         }
+
+        setDraggingStation(null);
       }
     },
   };
@@ -49,15 +54,17 @@ const OneStation = (props: {
             <div className="station-low">
               <span className="station-name">{option}</span>
 
-              <div className="station-item"></div>
-
-              <GetStationItem id={option} label={option} />
-
-              <StationDropArea
-                id={option}
-                label={option}
-                children={undefined}
-              />
+              <div className="station-item">
+                {draggingStation === null || draggingStation === option ? (
+                  <GetStationItem id={option} label={option} />
+                ) : (
+                  <StationDropArea
+                    id={option}
+                    label={option}
+                    children={undefined}
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>
