@@ -1,15 +1,15 @@
+//modules
 import React, { useState } from "react";
-import "../styles/Home.css";
 import OneStation from "../templates/OneStation";
-import edit from "../../assets/edit.svg";
 import { isMobile } from "react-device-detect";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
-import Button from "@mui/material/Button";
-import EditDialog from "./EditDialog";
-
+//files
+import "../styles/Home.css";
+import Header from "../organisms/Header";
 const Home: React.FC = () => {
+  //駅の選択肢をローカルストレージから読み込む or 初期値を設定
   const [options, setOptions] = useState<string[]>(() => {
     const storedOptions = localStorage.getItem("editOptions");
     return storedOptions
@@ -23,7 +23,6 @@ const Home: React.FC = () => {
         ];
   });
 
-  const [editDialogOpen, setEditDialogOpen] = useState<boolean>(false);
   const [draggingStation, setDraggingStation] = useState<string | null>(null);
 
   const handleDrop = (name: string, target: string) => {
@@ -34,28 +33,13 @@ const Home: React.FC = () => {
     window.location.href = url;
   };
 
-  const handleEditClick = () => {
-    setEditDialogOpen(true);
-  };
-
-  const handleEditClose = () => {
-    setEditDialogOpen(false);
-  };
-
-  const handleSaveOptions = (newOptions: string[]) => {
-    setOptions(newOptions);
-    localStorage.setItem("editOptions", JSON.stringify(newOptions));
-  };
-
   return (
     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
-      <div>
-        <div id="head">
-          <h1 id="title">Home</h1>
-          <Button id="editButton" onClick={handleEditClick}>
-            <img id="edit" src={edit} alt="edit" />
-          </Button>
-        </div>
+      <>
+        <Header
+          options={options}
+          setOptions={setOptions}
+        />
 
         <div id="description"></div>
 
@@ -67,13 +51,7 @@ const Home: React.FC = () => {
             handleDrop={handleDrop}
           />
         </div>
-        <EditDialog
-          open={editDialogOpen}
-          onClose={handleEditClose}
-          options={options}
-          onSave={handleSaveOptions}
-        />
-      </div>
+      </>
     </DndProvider>
   );
 };
