@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./styles/Home.css";
-import OneStation from "./OneStation";
-import edit from "../assets/edit.svg";
+import "../styles/Home.css";
+import OneStation from "../templates/OneStation";
+import edit from "../../assets/edit.svg";
 import { isMobile } from "react-device-detect";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
     setOptions(newOptions);
     localStorage.setItem("editOptions", JSON.stringify(newOptions));
   };
-  
+
   return (
     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
       <div>
