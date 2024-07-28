@@ -1,14 +1,13 @@
+//modules
 import { DndContext } from "@dnd-kit/core";
 import GetStationItem from "../molecules/DragStationItem";
 import StationDropArea from "../atoms/StationDropArea";
-import "../styles/OneStation.css";
+//files
+import "../styles/StationList.css";
+//types
+import { StationListProps } from "../../types/StationListProps";
 
-const OneStation = (props: {
-  options: any;
-  draggingStation: any;
-  setDraggingStation: any;
-  handleDrop: any;
-}) => {
+const StationList = (props: StationListProps) => {
   const { options, draggingStation, setDraggingStation, handleDrop } = props;
 
   const defaultAnnouncements = {
@@ -70,4 +69,4 @@ const OneStation = (props: {
     </>
   );
 };
-export default OneStation;
+export default StationList;

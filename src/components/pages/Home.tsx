@@ -1,6 +1,6 @@
 //modules
 import React, { useState } from "react";
-import OneStation from "../templates/OneStation";
+import StationList from "../templates/StationList";
 import { isMobile } from "react-device-detect";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -15,11 +15,11 @@ const Home: React.FC = () => {
     return storedOptions
       ? (JSON.parse(storedOptions) as string[])
       : [
-          "浜松駅/遠鉄バス",
-          "田町中央通り/遠鉄バス",
-          "市役所南/遠鉄バス",
-          "六間坂上/遠鉄バス",
-          "イオンモール浜松市野/遠鉄バス",
+          "東京",
+          "新宿",
+          "渋谷",
+          "目黒",
+          "横浜",
         ];
   });
 
@@ -41,16 +41,13 @@ const Home: React.FC = () => {
           setOptions={setOptions}
         />
 
-        <div id="description"></div>
-
-        <div id="stations">
-          <OneStation
-            options={options}
-            draggingStation={draggingStation}
-            setDraggingStation={setDraggingStation}
-            handleDrop={handleDrop}
-          />
-        </div>
+        <StationList
+          options={options}
+          draggingStation={draggingStation}
+          setDraggingStation={setDraggingStation}
+          handleDrop={handleDrop}
+        />
+        
       </>
     </DndProvider>
   );
