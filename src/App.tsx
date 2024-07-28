@@ -1,11 +1,11 @@
-import WindowSwitcher from './components/WindowSwitcher';
+import WindowSwitcher from "./components/pages/WindowSwitcher";
 
 function App() {
   return (
     <div>
       <WindowSwitcher />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

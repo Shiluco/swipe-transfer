@@ -1,19 +1,17 @@
+//modules
 import { DndContext } from "@dnd-kit/core";
-import GetStationItem from "./Draggable/DragStationItem";
-import StationDropArea from "./Droppable/StationDropArea";
-import "./styles/OneStation.css";
+import GetStationItem from "../molecules/DragStationItem";
+import StationDropArea from "../atoms/StationDropArea";
+//files
+import "../styles/StationList.css";
+//types
+import { StationListProps } from "../../types/StationListProps";
 
-const OneStation = (props: {
-  options: any;
-  draggingStation: any;
-  setDraggingStation: any;
-  handleDrop: any;
-}) => {
+const StationList = (props: StationListProps) => {
   const { options, draggingStation, setDraggingStation, handleDrop } = props;
 
   const defaultAnnouncements = {
-    onDragStart(event: any)
-    {
+    onDragStart(event: any) {
       const option = event.active.data.current?.label;
       setDraggingStation(option);
       console.log("drag start:", option);
@@ -71,4 +69,4 @@ const OneStation = (props: {
     </>
   );
 };
-export default OneStation;
+export default StationList;

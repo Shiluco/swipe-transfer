@@ -1,6 +1,6 @@
 import  { FC } from "react";
 import { useDraggable } from "@dnd-kit/core";
-import StartLooks from "./StartLooks";
+import StartLooks from "../atoms/StartLooks";
 
 type Props = {
   id: string;

@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main-text-color);
+  font-size: 1rem;
+  /* ヘッダー内の文字サイズを設定 */
+  font-weight: var(--good-font-weight);
+  /* 通常の太さ */
+}
